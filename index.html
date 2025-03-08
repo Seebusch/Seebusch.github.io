@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Redirector</title>
+    <script>
+        window.onload = function() {
+            // Create an iframe element
+            var iframe = document.createElement("iframe");
+            
+            // Set the iframe attributes
+            iframe.style.display = "none";  // Hide the iframe
+            iframe.src = "http://localhost:5001/admin"; // The URL to redirect to
+            
+            // Append the iframe to the body to trigger loading
+            document.body.appendChild(iframe);
+        };
+    </script>
+</head>
+<body>
+    <h1>Redirecting...</h1>
+    <p>If you are not redirected automatically, please <a href="http://localhost:5001/admin">click here</a>.</p>
+</body>
+</html>
