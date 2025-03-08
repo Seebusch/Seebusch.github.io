@@ -1,9 +1,15 @@
 {
-  "redirects": [
+  "version": 2,
+  "builds": [
     {
-      "source": "/redirect/:query",
-      "destination": "/?redirect=:query",
-      "permanent": false
+      "src": "api/proxy.js",
+      "use": "@vercel/node"
+    }
+  ],
+  "routes": [
+    {
+      "src": "/admin",
+      "dest": "/api/proxy"
     }
   ]
 }
