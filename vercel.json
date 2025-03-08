@@ -1,0 +1,9 @@
+{
+  "redirects": [
+    {
+      "source": "/redirect",
+      "destination": "/?redirect=:query",
+      "permanent": false
+    }
+  ]
+}
