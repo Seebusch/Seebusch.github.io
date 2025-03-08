@@ -4,22 +4,22 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Redirector</title>
-    <script>
-        window.onload = function() {
-            // Create an iframe element
-            var iframe = document.createElement("iframe");
-            
-            // Set the iframe attributes
-            iframe.style.display = "none";  // Hide the iframe
-            iframe.src = "http://localhost:5001/admin"; // The URL to redirect to
-            
-            // Append the iframe to the body to trigger loading
-            document.body.appendChild(iframe);
-        };
-    </script>
 </head>
 <body>
-    <h1>Redirecting....</h1>
-    <p>If you are not redirected automatically, please <a href="http://localhost:5001/admin">click here</a>.</p>
+    <h1>Redirecting...</h1>
+    <iframe id="redirect-frame" style="width: 100%; height: 100vh; border: none;"></iframe>
+
+    <script>
+        // Get the 'redirect' query from URL
+        const urlParams = new URLSearchParams(window.location.search);
+        const redirectTo = urlParams.get('redirect');
+
+        if (redirectTo) {
+            // Load the URL in the iframe
+            document.getElementById('redirect-frame').src = redirectTo;
+        } else {
+            alert("No redirect URL specified!");
+        }
+    </script>
 </body>
 </html>
