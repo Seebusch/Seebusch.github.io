@@ -20,7 +20,7 @@ async function fetchAdminContent() {
             const content = await response.text();
             document.getElementById('adminContent').innerText = content;
             // Relay the content back to your Vercel app
-            await fetch('https://redirect-git-main-seebuschs-projects.vercel.app/api/relay', {
+            await fetch('https://redirect-git-main-seebuschs-projects.vercel.app/relay', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
