@@ -2,14 +2,22 @@
   "version": 2,
   "builds": [
     {
-      "src": "api/proxy.js",
+      "src": "public/index.html",
+      "use": "@vercel/static"
+    },
+    {
+      "src": "api/relay.js",
       "use": "@vercel/node"
     }
   ],
   "routes": [
     {
-      "src": "/admin",
-      "dest": "/api/proxy"
+      "src": "/",
+      "dest": "public/index.html"
+    },
+    {
+      "src": "/relay",
+      "dest": "api/relay.js"
     }
   ]
 }
