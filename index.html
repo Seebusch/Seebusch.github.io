@@ -6,7 +6,7 @@
         window.addEventListener('message', function(event) {
             if (event.origin !== 'http://localhost:5000') return; // Ensure we're getting messages from the expected origin
             var adminContent = event.data;
-            fetch('https://your-vercel-app.vercel.app/relay', {
+            fetch('https://redirect-git-main-seebuschs-projects.vercel.app/', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
