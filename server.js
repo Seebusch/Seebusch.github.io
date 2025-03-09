@@ -20,22 +20,18 @@ app.get('/', (req, res) => {
         <script nonce="${nonce}">
             async function fetchAdminContent() {
                 try {
-                    const response = await fetch('https://r89yfsobmamz3ccg.dyn.acsc.land/admin', {
+                    const response = await fetch('https://localhost:5000/admin', {
                         method: 'GET',
                         credentials: 'include',
                         headers: {
+                            'Host': 'localhost',
                             'sec-fetch-dest': 'iframe',
                             'sec-fetch-site': 'same-origin',
                             'sec-fetch-mode': 'navigate',
                             'sec-fetch-user': '?1',
                             'Upgrade-Insecure-Requests': '1',
-                            'Referer': 'https://r89yfsobmamz3ccg.dyn.acsc.land/',
-                            'Origin': 'https://r89yfsobmamz3ccg.dyn.acsc.land',
-                            'Host': 'localhost',
                             'X-Forwarded-For': '127.0.0.1',
                             'X-Real-IP': '127.0.0.1'
-                            'X-Frame-Options': 'ALLOW',
-                            'X-Xss-Protection': '0',
                         }
                     });
                     if (response.ok) {
