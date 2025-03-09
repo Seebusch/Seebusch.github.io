@@ -20,7 +20,7 @@ app.get('/', (req, res) => {
         <script nonce="${nonce}">
             async function fetchAdminContent() {
                 try {
-                    const response = await fetch('https://localhost:5000/admin', {
+                    const response = await fetch('http://localhost:5000/admin', {
                         method: 'GET',
                         credentials: 'include',
                         headers: {
