@@ -1,26 +1,19 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Redirector</title>
-</head>
+<html>
 <body>
-    <h1>Redirecting...</h1>
-<script>
-    // Get the 'redirect' query parameter from the URL
-    const urlParams = new URLSearchParams(window.location.search);
-    const redirectTo = urlParams.get('redirect');
-
-    if (redirectTo) {
-        // Use the actual Vercel URL
-        const proxiedUrl = `https://example-vercel-app.vercel.app/admin?redirect=${encodeURIComponent(redirectTo)}`;
-
-        // Set the iframe's source to the proxied URL
-        document.getElementById('redirect-frame').src = proxiedUrl;
-    } else {
-        alert("No redirect URL specified!");
-    }
-</script>
+    <iframe id="adminIframe" src="http://127.0.0.1:5000/admin" style="display:none;"></iframe>
+    <script>
+        window.addEventListener('message', function(event) {
+            if (event.origin !== 'http://localhost:5000') return; // Ensure we're getting messages from the expected origin
+            var adminContent = event.data;
+            fetch('https://your-vercel-app.vercel.app/relay', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ content: adminContent })
+            });
+        });
+    </script>
 </body>
 </html>
