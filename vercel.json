@@ -2,22 +2,22 @@
   "version": 2,
   "builds": [
     {
-      "src": "public/index.html",
+      "src": "index.html",
       "use": "@vercel/static"
     },
     {
-      "src": "api/relay.js",
+      "src": "relay.js",
       "use": "@vercel/node"
     }
   ],
   "routes": [
     {
       "src": "/",
-      "dest": "public/index.html"
+      "dest": "index.html"
     },
     {
       "src": "/relay",
-      "dest": "api/relay.js"
+      "dest": "relay.js"
     }
   ]
 }
