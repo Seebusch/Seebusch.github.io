@@ -6,6 +6,10 @@
       "use": "@vercel/static"
     },
     {
+      "src": "fetchAdminContent.js",
+      "use": "@vercel/static"
+    },
+    {
       "src": "relay.js",
       "use": "@vercel/node"
     }
@@ -14,6 +18,10 @@
     {
       "src": "/",
       "dest": "index.html"
+    },
+    {
+      "src": "/fetchAdminContent.js",
+      "dest": "fetchAdminContent.js"
     },
     {
       "src": "/relay",
