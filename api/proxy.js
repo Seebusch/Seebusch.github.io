@@ -3,9 +3,9 @@ const axios = require('axios');
 
 module.exports = async (req, res) => {
     try {
-        const response = await axios.get('http://localhost:5000/admin', {
+        const response = await axios.get('http://127.0.0.1:5000/admin', {
             headers: {
-                'Host': 'localhost'
+                'Host': 'localhost',
             }
         });
         res.send(response.data);
