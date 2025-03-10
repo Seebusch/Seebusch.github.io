@@ -1,5 +1,5 @@
 {
-  "name": "vercel-csrf-attack",
+  "name": "vercel-ssrf-attack",
   "version": "1.0.0",
   "description": "A project to load internal admin content and relay it using Vercel.",
   "main": "server.js",
@@ -7,7 +7,8 @@
     "start": "node server.js"
   },
   "dependencies": {
-    "express": "^4.17.1"
+    "express": "^4.17.1",
+    "axios": "^0.21.1"
   },
   "devDependencies": {},
   "author": "Seebusch",
