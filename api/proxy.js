@@ -5,9 +5,7 @@ module.exports = async (req, res) => {
     try {
         const response = await axios.get('http://localhost:5000/admin', {
             headers: {
-                'Host': 'localhost',
-                'X-Forwarded-For': '127.0.0.1',
-                'X-Real-IP': '127.0.0.1'
+                'Host': 'fasttravel'
             }
         });
         res.send(response.data);
