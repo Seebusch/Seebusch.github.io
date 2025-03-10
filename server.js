@@ -9,55 +9,14 @@ app.use((req, res, next) => {
     next();
 });
 
-// Route to serve the HTML
+// Serve static files from the 'public' directory
+app.use(express.static('public'));
+
+// Route to serve the index.html with nonce
 app.get('/', (req, res) => {
     const nonce = res.locals.nonce;
-    const html = `
-    <!DOCTYPE html>
-    <html>
-    <body>
-        <div id="adminContent"></div>
-        <script nonce="${nonce}">
-            async function fetchAdminContent() {
-                try {
-                    const response = await fetch('http://localhost:5000/admin', {
-                        method: 'GET',
-                        credentials: 'include',
-                        headers: {
-                            'Host': 'localhost',
-                            'sec-fetch-dest': 'iframe',
-                            'sec-fetch-site': 'same-origin',
-                            'sec-fetch-mode': 'navigate',
-                            'sec-fetch-user': '?1',
-                            'Upgrade-Insecure-Requests': '1',
-                            'X-Forwarded-For': '127.0.0.1',
-                            'X-Real-IP': '127.0.0.1'
-                        }
-                    });
-                    if (response.ok) {
-                        const content = await response.text();
-                        document.getElementById('adminContent').innerText = content;
-                        // Relay the content back to your Vercel app
-                        await fetch('https://redirect-git-main-seebuschs-projects.vercel.app/api/relay', {
-                            method: 'POST',
-                            headers: {
-                                'Content-Type': 'application/json'
-                            },
-                            body: JSON.stringify({ content })
-                        });
-                    } else {
-                        document.getElementById('adminContent').innerText = 'Failed to load admin content.';
-                    }
-                } catch (error) {
-                    document.getElementById('adminContent').innerText = 'Error fetching admin content.';
-                }
-            }
-            fetchAdminContent();
-        </script>
-    </body>
-    </html>
-    `;
-    res.send(html);
+    res.setHeader('Content-Security-Policy', `script-src 'self' 'nonce-${nonce}'`);
+    res.sendFile(__dirname + '/public/index.html');
 });
 
 app.listen(port, () => {

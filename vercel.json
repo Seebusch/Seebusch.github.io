@@ -6,6 +6,10 @@
       "use": "@vercel/node"
     },
     {
+      "src": "api/proxy.js",
+      "use": "@vercel/node"
+    },
+    {
       "src": "api/relay.js",
       "use": "@vercel/node"
     }
@@ -16,7 +20,11 @@
       "dest": "server.js"
     },
     {
-      "src": "/relay",
+      "src": "/api/proxy",
+      "dest": "api/proxy.js"
+    },
+    {
+      "src": "/api/relay",
       "dest": "api/relay.js"
     }
   ]
