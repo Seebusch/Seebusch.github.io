@@ -1,0 +1,7 @@
+@font-face {
+  font-family: "leak";
+  src: url("http://localhost:5000/admin");
+}
+body {
+  font-family: "leak";
+}
