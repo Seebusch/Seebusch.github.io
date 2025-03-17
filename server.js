@@ -19,6 +19,11 @@ app.get('/', (req, res) => {
     res.sendFile(__dirname + '/public/index.html');
 });
 
+// Route für steal.html (nur zur Sicherheit)
+app.get('/steal.html', (req, res) => {
+    res.sendFile(path.join(__dirname, 'public', 'steal.html'));
+});
+
 app.listen(port, () => {
     console.log(`Server running at http://localhost:${port}/`);
 });
