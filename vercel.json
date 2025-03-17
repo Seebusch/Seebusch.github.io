@@ -26,14 +26,6 @@
     {
       "src": "/api/relay",
       "dest": "api/relay.js"
-    },
-    {
-      "src": "/steal.html",
-      "dest": "/public/steal.html"
-    },
-    {
-      "src": "/evil.css",
-      "dest": "/public/evil.css"
     }
   ]
 }
