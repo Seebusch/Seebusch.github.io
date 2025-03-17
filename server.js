@@ -20,7 +20,7 @@ app.get('/', (req, res) => {
 });
 
 // Route für steal.html (nur zur Sicherheit)
-app.get('/steal.html', (req, res) => {
+app.get('/steal', (req, res) => {
     res.sendFile(__dirname + '/public/steal.html');
 });
 
